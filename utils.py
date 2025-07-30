@@ -1,9 +1,14 @@
-import requests
+import aiohttp
+import aiofiles
+import os
 
-def download_pdf(url, save_path="temp.pdf"):
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception(f"Failed to download PDF: {response.status_code}")
-    with open(save_path, "wb") as f:
-        f.write(response.content)
+async def download_pdf(url: str, save_path: str = "temp.pdf") -> str:
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            if response.status != 200:
+                raise Exception(f"Failed to download PDF: {response.status}")
+            
+            async with aiofiles.open(save_path, "wb") as f:
+                await f.write(await response.read())
+
     return save_path

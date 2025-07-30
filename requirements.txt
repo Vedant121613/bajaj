@@ -1,14 +1,25 @@
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
 aiohttp
 aiofiles
 requests
+
+# LangChain core + community + Google + vector stores
 langchain
 langchain-community
 langchain-google-genai
 google-generativeai
+
+# PDF processing
 PyMuPDF
+
+# Vector storage
 faiss-cpu
+
+# For Hugging Face models & transformers
 transformers
 sentence-transformers
+
+# For optional embedding loading and huggingface caching
+huggingface-hub
