@@ -17,7 +17,7 @@ def root(request: Request):
 @app.post("/hackrx/run")
 async def run_api(payload: RequestPayload, authorization: str = Header(None)):
     if not validate_token(authorization):
-        raise HTTPException(status_code=401, detail="Invalid or missing token")
+        raise HTTPException(status_code=401, detail="Invalid or  a missing token")
 
     try:
         pdf_path = download_pdf(payload.documents)
