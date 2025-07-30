@@ -26,7 +26,7 @@ def get_embeddings_instance():
     global _embeddings_instance
     if _embeddings_instance is None:
         print("🔄 Loading HuggingFace embeddings once...")
-        _embeddings_instance = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        _embeddings_instance = HuggingFaceEmbeddings(model_name="BAAI/bge-base-en-v1.5")
     return _embeddings_instance
 
 

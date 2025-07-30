@@ -80,6 +80,12 @@ async def process_questions_batch(rag: RAGPipeline, questions: List[str]) -> Lis
         tasks = [process_question_async(rag, q) for q in questions]
         return await asyncio.gather(*tasks)
 
+
+@app.api_route("/", methods=["GET", "POST", "HEAD"])
+async def root(request: Request):
+    return {"message": f"RAG Pipeline API is running with method {request.method}"}
+
+
 @app.post("/hackrx/run")
 async def run_api(payload: RequestPayload, authorization: str = Header(None)):
     try:
