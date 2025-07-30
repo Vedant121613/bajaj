@@ -143,9 +143,6 @@ async def clear_cache(authorization: str = Header(None)):
 async def health_check():
     return {"status": "healthy"}
 
-@app.get("/")
-async def root():
-    return {"message": "RAG Pipeline API"}
 
 @app.on_event("shutdown")
 async def shutdown_event():
